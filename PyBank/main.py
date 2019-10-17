@@ -32,10 +32,16 @@ print('Total Profit:',sum(pl))
 #average change in P/L over time
 for i in range(months-1):
     delta.append(pl[i+1]-pl[i])
-print('Average Change:', statistics.mean(delta))
+    m = statistics.mean(delta)
+print('Average Change: ${:.2f}'.format(m))
+#print('Average Change:', '$', round(statistics.mean(delta)))
 #print('Average Change:', '10.2f' % statistics.mean(delta))
+
 #greatest increase in profits
-print('Greatest Increase:', max(delta))
+for rows in csvreader:
+    if delta == max(delta)
+    print(row[0])
+#print('Greatest Increase:', max(delta))
 #greatest decrease in losses 
-print('Greatest Decrease:', min(delta))
+#print('Greatest Decrease:', min(delta))
 
