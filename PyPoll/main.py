@@ -2,6 +2,7 @@ import os
 import csv 
 import statistics
 import pandas as pd
+import sys
 
 Khan= 'Khan' 
 Total_Khan= []
@@ -72,3 +73,17 @@ print('WINNER IS ', df2['TOTAL VOTES'].idxmax())
 #print(df2.loc[0,int(elec_winner)])
 
 print('--------------------------------------')
+
+#print results to txt 
+stdoutOrigin=sys.stdout 
+sys.stdout = open("PyPollResults.txt", "w")
+print('ELECTION RESULTS')
+print('--------------------------------------')
+print('TOTAL VOTES:', row_count) 
+print('--------------------------------------')
+print(df2)
+print('--------------------------------------')
+print('WINNER IS ', df2['TOTAL VOTES'].idxmax())
+print('--------------------------------------')
+sys.stdout.close()
+sys.stdout=stdoutOrigin
