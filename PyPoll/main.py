@@ -39,23 +39,36 @@ print('--------------------------------------')
 
 #panda dataframe
 df= pd.read_csv(csvpath)
+
 #print(df['Candidate'].unique())
-Vote_count= df['Candidate'].value_counts()
-pct= df['Candidate'].value_counts() / df['Candidate'].value_counts().sum()
+#Vote_count= df['Candidate'].value_counts()
 
 #Pct= df['Candidate'].value_counts() / row_count
 
-print(df['Candidate'].value_counts(), '{:.2%}'.format(pct))
+#print(df['Candidate'].value_counts(), '{:.2%}'.format(pct))
 
 
 
 #group by Candidate
-#can=df.groupby('Candidate').average()
+df1= df.groupby('Candidate').count()
+
+#print(df1)
+df2= df1.rename(columns={"Voter ID": "TOTAL VOTES", "County": "PERCENTAGE"})
+df2['PERCENTAGE']=(df2['TOTAL VOTES'] / int(row_count)).astype(float).map("{:.2%}".format)
+print(df2)
+
 #print(can.first())
-
-
-
 print('--------------------------------------')
 # winner 
+#df_series= pd.to_numeric(df2)
+#df2['TOTAL VOTES']= pd.to_numeric(df2['TOTAL VOTES'])
+
+#elec_winner= df2['TOTAL VOTES'].max()
+#print(df2.loc([0,df2.values.argmax()])
+#print(df2.at[2,'TOTAL VOTES'])
+#print(df.loc[df['Voter Id'].idxmax()], 'Candidate')
+#print(df2)
+print('WINNER IS ', df2['TOTAL VOTES'].idxmax())
+#print(df2.loc[0,int(elec_winner)])
 
 print('--------------------------------------')
