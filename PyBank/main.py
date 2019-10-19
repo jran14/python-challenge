@@ -1,6 +1,7 @@
 import os
 import csv 
 import statistics
+import sys
 pl = []
 delta = []
 mon=[]
@@ -52,3 +53,17 @@ min1=delta.index(min(delta))
 #print(min1)
 print('Greatest Decrease in Profits:',  mon[min1+1], '(',min(delta),')')
 
+#print to txt file
+
+stdoutOrigin=sys.stdout 
+sys.stdout = open("PyBankResults.txt", "w")
+print('FINANCIAL ANALYSIS')
+print('----------------------------------')
+print('Total Number of Months', months)
+print('Total Profit:',sum(pl))
+print('Average Change: ${:.2f}'.format(m))
+print('Greatest Increase in Profits:', mon[max1+1], '(',max(delta),')')
+print('Greatest Decrease in Profits:',  mon[min1+1], '(',min(delta),')')
+
+sys.stdout.close()
+sys.stdout=stdoutOrigin
